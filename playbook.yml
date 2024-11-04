@@ -1,0 +1,6 @@
+- name: Установка и настройка VPN
+  hosts: proxmox
+  become: yes
+  roles:
+    - driver
+    - vpn

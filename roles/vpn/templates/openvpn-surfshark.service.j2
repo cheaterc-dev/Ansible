@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenVPN connection to Surfshark
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/openvpn --config /etc/openvpn/{{ VPN_CFG }}
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

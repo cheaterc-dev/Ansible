@@ -1,0 +1,26 @@
+---
+- name: Install driver rtl8192eu
+  git:
+    repo: 'https://github.com/Mange/rtl8192eu-linux-driver'
+    dest: /tmp/rtl8192eu-linux-driver
+
+
+- name: Add and install driver in DKMS
+  shell: |
+    cd /tmp/rtl8192eu-linux-driver
+    dkms add .
+    dkms install rtl8192eu/1.0
+    echo "blacklist rtl8xxxu" | tee /etc/modprobe.d/rtl8xxxu.conf
+    echo -e "8192eu\n\nloop" | tee /etc/modules
+    echo "options 8192eu rtw_power_mgnt=0 rtw_enusbss=0" | tee /etc/modprobe.d/8192eu.conf
+    update-grub
+    update-initramfs -u
+
+
+
+
+
+
+
+
+

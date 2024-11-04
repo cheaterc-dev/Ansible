@@ -1,0 +1,11 @@
+- name: Reload udev rules again
+  command: udevadm control --reload
+
+
+- name: Restart hostapd
+  command: systemctl restart hostapd.service
+
+- name: Restart dnsmasq
+  command: systemctl restart dnsmasq.service
+
+
